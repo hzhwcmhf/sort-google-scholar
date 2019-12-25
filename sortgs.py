@@ -58,6 +58,7 @@ def get_command_line_args():
     parser.add_argument('--plotresults', action='store_true', help='Use this flag in order to plot the results with the original rank in the x-axis and the number of citaions in the y-axis. Default is False')
     parser.add_argument('--startyear', type=int, help='Start year when searching. Default is None')
     parser.add_argument('--endyear', type=int, help='End year when searching. Default is current year')
+    parser.add_argument('--start', type=int, default=0)
 
     # Parse and read arguments and assign them to variables if exists
     args, _ = parser.parse_known_args()
@@ -94,7 +95,7 @@ def get_command_line_args():
     if args.endyear:
         end_year=args.endyear
 
-    return keyword, nresults, save_csv, csvpath, sortby, plot_results, start_year, end_year
+    return keyword, nresults, save_csv, csvpath, sortby, plot_results, start_year, end_year, args.start
 
 def get_citations(content):
     out = 0
@@ -170,7 +171,7 @@ def get_content_with_selenium(url):
 
 def main():
     # Get command line arguments
-    keyword, number_of_results, save_database, path, sortby_column, plot_results, start_year, end_year = get_command_line_args()
+    keyword, number_of_results, save_database, path, sortby_column, plot_results, start_year, end_year, start = get_command_line_args()
 
     # Create main URL based on command line arguments
     if start_year:
@@ -194,7 +195,7 @@ def main():
     rank = [0]
 
     # Get content from number_of_results URLs
-    for n in range(0, number_of_results, 10):
+    for n in range(start, number_of_results, 10):
         #if start_year is None:
         url = GSCHOLAR_MAIN_URL.format(str(n), keyword.replace(' ','+'))
         #else:
