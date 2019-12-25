@@ -40,7 +40,7 @@ ENDYEAR = now.year # Current year
 
 # Websession Parameters
 # GSCHOLAR_URL = 'https://scholar.google.com/scholar?start={}&q={}&hl=en&as_sdt=0,5'
-GSCHOLAR_URL = 'https://scholar.google.com/scholar?cites=15692266515007774871&start={}&q={}&hl=en&as_sdt=0,5'
+GSCHOLAR_URL = 'https://scholar.google.com/scholar?start={}&cites={}&hl=en&as_sdt=0,5'
 YEAR_RANGE = '' #&as_ylo={start_year}&as_yhi={end_year}'
 #GSCHOLAR_URL_YEAR = GSCHOLAR_URL+YEAR_RANGE
 STARTYEAR_URL = '&as_ylo={}'
